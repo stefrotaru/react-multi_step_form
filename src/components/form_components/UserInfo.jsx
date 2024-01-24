@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { updateFormUser } from "../../store/reducers/formUserReducer";
 import { updateStep } from "../../store/reducers/stepsProgressReducer";
 
-const UserInfo = () => {
+const UserInfo = (isVisible) => {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhoneNum, setUserPhoneNum] = useState("");
@@ -31,7 +31,10 @@ const UserInfo = () => {
     if (userName.length < 3) {
       e.target.classList.add("error");
 
-      setFieldErrors({ ...fieldErrors, name: "Name must be at least 3 characters long" });
+      setFieldErrors({
+        ...fieldErrors,
+        name: "Name must be at least 3 characters long",
+      });
     } else {
       e.target.classList.remove("error");
       e.target.classList.add("valid");
@@ -74,10 +77,13 @@ const UserInfo = () => {
     console.log("Fields valid? ", fieldErrors);
 
     if (
-      (fieldErrors.name === '' && userName !== '') && 
-      (fieldErrors.email === '' && userEmail !== '') &&
-      (fieldErrors.phone === '' && userPhoneNum !== '') 
-      ) {
+      fieldErrors.name === "" &&
+      userName !== "" &&
+      fieldErrors.email === "" &&
+      userEmail !== "" &&
+      fieldErrors.phone === "" &&
+      userPhoneNum !== ""
+    ) {
       dispatch(
         updateFormUser({
           name: userName,
@@ -85,87 +91,114 @@ const UserInfo = () => {
           phone: userPhoneNum,
         })
       );
-      dispatch(updateStep({
-        step: "userInfo",
-        value: true,
-      }));
-    } 
-    else {
-      if (!fieldErrors.name && userName === '') {
+      dispatch(
+        updateStep({
+          step: "userInfo",
+          value: true,
+        })
+      );
+    } else {
+      if (!fieldErrors.name && userName === "") {
         document.querySelector("#user_name").classList.add("error");
         // setFieldErrors({ ...fieldErrors, name: "Name must be at least 3 characters long" });
       }
-      if (!fieldErrors.email && userEmail === '') {
+      if (!fieldErrors.email && userEmail === "") {
         document.querySelector("#user_email").classList.add("error");
         // setFieldErrors({ ...fieldErrors, email: "Invalid email format" });
       }
-      if (!fieldErrors.phone && userPhoneNum === '') {
+      if (!fieldErrors.phone && userPhoneNum === "") {
         document.querySelector("#user_phone").classList.add("error");
         // setFieldErrors({ ...fieldErrors, phone: "Invalid phone number format" });
       }
     }
   };
 
+  console.log("from userInfo component: ", isVisible.isVisible);
+
+  if (!isVisible.isVisible) {
+    return null;
+  }
+
   return (
     <>
-      <form className="user-form">
-        <div className="user-form__input_container">
-          <div className="user-form__input_container__label">
-            <label htmlFor="name">Name</label>
-            {fieldErrors.name && <span className="error">{fieldErrors.name}</span>}
-          </div>
-          <input
-            type="text"
-            name="name"
-            placeholder="e.g. Stephen King"
-            autoComplete="name"
-            value={userName}
-            onChange={nameInputHandler}
-            onBlur={checkNameInput}
-            className=""
-            id="user_name"
-          />
+      <div className="form_container">
+        <div className="form_container__header">
+          <h1 className="form_container__header__title">Personal info</h1>
+          <p className="form_container__header__description">
+            Please provide your name, email address, and phone number.
+          </p>
         </div>
 
-        <div className="user-form__input_container">
-          <div className="user-form__input_container__label">
-            <label htmlFor="email">Email Address</label>
-            {fieldErrors.email && <span className="error">{fieldErrors.email}</span>}
-          </div>
-          <input
-            type="email"
-            name="email"
-            placeholder="e.g. stephenking@lorem.com"
-            autoComplete="email"
-            value={userEmail}
-            onChange={emailInputHandler}
-            onBlur={checkEmailInput}
-            className=""
-            id="user_email"
-          />
-        </div>
+        <form className="form_container__form">
+          <div className="form_container__form-input">
+            <div className="form_container__form-input__group">
+              <div className="form_container__form-input__group__label">
+                <label htmlFor="name">Name</label>
+                {fieldErrors.name && (
+                  <span className="error">{fieldErrors.name}</span>
+                )}
+              </div>
+              <input
+                type="text"
+                name="name"
+                placeholder="e.g. Stephen King"
+                autoComplete="name"
+                value={userName}
+                onChange={nameInputHandler}
+                onBlur={checkNameInput}
+                className=""
+                id="user_name"
+              />
+            </div>
 
-        <div className="user-form__input_container">
-          <div className="user-form__input_container__label">
-            <label htmlFor="phone">Phone Number</label>
-            {fieldErrors.phone && <span className="error">{fieldErrors.phone}</span>}
+            <div className="form_container__form-input__group">
+              <div className="form_container__form-input__group__label">
+                <label htmlFor="email">Email Address</label>
+                {fieldErrors.email && (
+                  <span className="error">{fieldErrors.email}</span>
+                )}
+              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="e.g. stephenking@lorem.com"
+                autoComplete="email"
+                value={userEmail}
+                onChange={emailInputHandler}
+                onBlur={checkEmailInput}
+                className=""
+                id="user_email"
+              />
+            </div>
+
+            <div className="form_container__form-input__group">
+              <div className="form_container__form-input__group__label">
+                <label htmlFor="phone">Phone Number</label>
+                {fieldErrors.phone && (
+                  <span className="error">{fieldErrors.phone}</span>
+                )}
+              </div>
+              <input
+                type="phone"
+                name="phone"
+                placeholder="e.g +1 234 567 890"
+                autoComplete="phone"
+                value={userPhoneNum}
+                onChange={phoneNumInputHandler}
+                onBlur={checkPhoneNumInput}
+                className=""
+                id="user_phone"
+              />
+            </div>
           </div>
-          <input
-            type="phone"
-            name="phone"
-            placeholder="e.g +1 234 567 890"
-            autoComplete="phone"
-            value={userPhoneNum}
-            onChange={phoneNumInputHandler}
-            onBlur={checkPhoneNumInput}
-            className=""
-            id="user_phone"
-          />
-        </div>
-        <button type="submit" onClick={submitHandler}>
-          Next Step
-        </button>
-      </form>
+
+          <div className="form_container__form__submit_container">
+            <button type="submit" onClick={submitHandler}>
+              Next Step
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 };

@@ -1,0 +1,35 @@
+@import './fonts.scss';
+
+// Colors
+$primary-marine_blue: hsl(213, 96%, 18%);
+$primary-purplish_blue: hsl(243, 100%, 62%);
+$primary-paste_blue: hsl(228, 100%, 84%);
+$primary-ligh_blue: hsl(206, 94%, 87%);
+$primary-strawberry_red: hsl(354, 84%, 57%);
+
+$neutral-cool_gray: hsl(231, 11%, 63%);
+$neutral-light_gray: hsl(229, 24%, 87%);
+$neutral-magnolia: hsl(217, 100%, 97%);
+$neutral-alabaster: hsl(231, 100%, 99%);
+$neutral-white: hsl(0, 0%, 100%);
+
+// Breakpoints
+$breakpoint-mobile-sm: 375px;
+$breakpoint-mobile-lg: 480px;
+$breakpoint-tablet-sm: 481px;
+$breakpoint-tablet-lg: 768px;
+$breakpoint-desktop: 1024px;
+
+// Typography
+$primary-font-family: 'Ubuntu', sans-serif;
+
+// Form
+$form-font-primary-color: $primary-marine_blue;
+$form-font-secondary-color: $neutral-cool_gray;
+$form-border-color: $neutral-light_gray;
+
+$form-error-color: $primary-strawberry_red;
+
+// Progress Bar
+$progress-bar-background: url(../../public/bg-sidebar-desktop.svg) no-repeat center center;
+$progress-bar-background-mobile: url(../../public/bg-sidebar-mobile.svg) no-repeat center center;

@@ -1,3 +1,21 @@
+@import "../variables.scss";
+
+
 .progress-bar {
-    flex: 1 100% 25%; // 1/4 width
+  background: $progress-bar-background;
+  border-radius: 0.5rem;
+  background-size: cover;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  @media screen and (max-width: $breakpoint-tablet-lg) {
+    background: $progress-bar-background-mobile;
+    background-size: cover;
+    border-radius: 0;
+  }
 }

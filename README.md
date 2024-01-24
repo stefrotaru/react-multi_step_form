@@ -12,27 +12,23 @@ Currently, two official plugins are available:
 The Redux store slices are defined as follows:
 
 {
-  ---------------------------------
   stepsProgress?: {
-    1: false,
-    2: false,
-    3: false,
-    4: false,
+    userInfo: false,
+    selectPlan: false,
+    selectAddons: false,
+    summary: false,
   },
-  ---------------------------------
   user: {
     name: '',
     email: '',
     phone: '',
   },
-  ---------------------------------
   plan: {
     subscriptionType: '',
     subscriptionPrice: '',
     subscriptionRenewalInterval: '', (1-12; Actually this will always be 1)
     subscriptionRenewalIntervalUnit: '', (Month || Year)
   },
-  ---------------------------------
   addons: [
     {
       addonName: '',
@@ -44,5 +40,4 @@ The Redux store slices are defined as follows:
       ...
     },
   ],
-  ---------------------------------
 }

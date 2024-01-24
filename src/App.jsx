@@ -1,18 +1,18 @@
 // import { useState } from 'react'
-import Form from './components/Form'
-import ProgressBar from './components/ProgressBar'
+import Form from "./components/Form";
+import ProgressBar from "./components/ProgressBar";
 
-import './styles/App.scss'
+import "./styles/App.scss";
 
 function App() {
-
-
   return (
     <>
-      <ProgressBar />
-      <Form />
+      <div className="container">
+        <ProgressBar />
+        <Form />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

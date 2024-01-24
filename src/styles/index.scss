@@ -1,23 +1,7 @@
 @import "./App.scss";
-
-// $primary-marine_blue: hsl(213, 96%, 18%);
-// $primary-purplish_blue: hsl(243, 100%, 62%);
-// $primary-paste_blue: hsl(228, 100%, 84%);
-// $primary-ligh_blue: hsl(206, 94%, 87%);
-// $primary-strawberry_red: hsl(354, 84%, 57%);
-
-// $neutral-cool_gray: hsl(231, 11%, 63%);
-// $neutral-light_gray: hsl(229, 24%, 87%);
-// $neutral-magnolia: hsl(217, 100%, 97%);
-// $neutral-alabaster: hsl(231, 100%, 99%);
-// $neutral-white: hsl(0, 0%, 100%);
+@import "./variables.scss";
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -42,6 +26,10 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  @media screen and (max-width: $breakpoint-tablet-lg) {
+    display: block;
+  }
 }
 
 h1 {
@@ -49,29 +37,33 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+button,
+.next {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: $neutral-white;
+  background-color: $primary-marine_blue;
+  transition: background-color 0.25s;
   cursor: pointer;
-  transition: border-color 0.25s;
+
+  &:hover {
+    background-color: lighten($primary-marine_blue, 15%);
+  }
+
+  &:focus {
+    outline: .2em solid lighten($primary-marine_blue, 55%);
+  }
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: $neutral-white;
   }
   a:hover {
     color: #747bff;

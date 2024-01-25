@@ -132,6 +132,14 @@
     }
   }
 
+  @media screen and (max-width: $breakpoint-desktop-md) {
+    padding: 0 4rem;
+  }
+
+  @media screen and (max-width: $breakpoint-desktop-sm) {
+    padding: 0 2rem;
+  }
+
   @media screen and (max-width: $breakpoint-tablet-lg) {
     display: block;
 

@@ -10,14 +10,14 @@
   text-align: center;
 
   font-family: $primary-font-family;
-  
+
   .container {
     // height: 70vh;
     // width: 70vw;
     // max-height: 39rem;
     height: 39rem;
     border-radius: 0.75rem;
-  
+
     display: grid;
     grid-template-columns: 1.25fr 3fr;
 
@@ -28,6 +28,13 @@
 
   input {
     font-family: $primary-font-family;
+  }
+
+  @media screen and (max-width: $breakpoint-mobile-sm) {
+    input {
+      font-size: 0.75em;
+      padding: 0.75rem;
+    }
   }
 
   @media screen and (max-width: $breakpoint-tablet-lg) {
@@ -46,15 +53,24 @@
       width: 100%;
 
       background: $neutral-magnolia;
-
     }
-    
   }
 
-  @media screen and (max-width: $breakpoint-mobile-sm) {
-    input {
-      font-size: .75em;
-      padding: .75rem;
+  @media screen and (min-width: $breakpoint-desktop-sm) {
+    .container {
+      width: 800px;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-desktop-md) {
+    .container {
+      width: 900px;
+    }
+  }
+
+  @media screen and (min-width: $breakpoint-desktop-lg) {
+    .container {
+      width: 1024px;
     }
   }
 }

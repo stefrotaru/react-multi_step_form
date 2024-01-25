@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  subscriptionType: "",
-  subscriptionPrice: "",
-  subscriptionRenewalInterval: "", // (1-12; Actually this will always be 1)
-  subscriptionRenewalIntervalUnit: "", // (Month || Year)
+  subscriptionType: "Arcade",
+  subscriptionPrice: "9",
+  subscriptionRenewalInterval: "1", // (1-12; Actually this will always be 1)
+  subscriptionRenewalIntervalUnit: "Monthly", // (Month || Year)
 };
 
 // Reducer function
@@ -14,18 +14,30 @@ const formPlanReducer = createSlice({
   initialState: initialState,
   reducers: {
     updatePlan: (state = initialState, action) => {
-      console.log("action", action);
       return {
         ...state,
         subscriptionType: action.payload.subscriptionType,
         subscriptionPrice: action.payload.subscriptionPrice,
         subscriptionRenewalInterval: action.payload.subscriptionRenewalInterval,
-        subscriptionRenewalIntervalUnit:
-          action.payload.subscriptionRenewalIntervalUnit,
+        subscriptionRenewalIntervalUnit: action.payload.subscriptionRenewalIntervalUnit,
+      };
+    },
+    updatePeriodUnit: (state = initialState, action) => {
+      return {
+        ...state,
+        subscriptionPrice: action.payload.subscriptionPrice,
+        subscriptionRenewalIntervalUnit: action.payload.subscriptionRenewalIntervalUnit,
+      };
+    },
+    updatePlanType: (state = initialState, action) => {
+      return {
+        ...state,
+        subscriptionType: action.payload.subscriptionType,
+        subscriptionPrice: action.payload.subscriptionPrice,
       };
     },
   },
 });
 
-export const { updatePlan } = formPlanReducer.actions;
+export const { updatePlan, updatePeriodUnit, updatePlanType } = formPlanReducer.actions;
 export default formPlanReducer.reducer;

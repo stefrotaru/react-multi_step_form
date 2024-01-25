@@ -1,1 +1,86 @@
 @import "../../variables.scss";
+
+.form_container {
+
+    &__header {}
+
+    &__form {
+        color: $primary-marine_blue;
+        justify-content: unset;
+
+        &__addon-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+
+            &__addon {
+                border: 1px solid $primary-purplish_blue;
+                padding: 1.5rem;
+                border-radius: 8px;
+                position: relative;
+
+                display: flex;
+                align-items: center;
+
+                &__checkbox {
+
+                    input {
+                        cursor: pointer;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0;
+                    }
+                }
+
+                &__description {
+                    width: 100%;
+
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &__text {
+                        padding-left: 1.5rem;
+
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 0.2rem;
+                        
+                        &__title {
+                            font-size: 1em;
+                            font-weight: 700;
+                        }
+
+                        &__description {
+                            font-size: .9em;
+                            color: $neutral-cool_gray;
+                        }
+                    }
+
+                    &__price {
+                        font-size: 1em;
+                        font-weight: 700;
+                        color: $primary-purplish_blue;
+                    }
+                }
+            }
+
+            &__addon:has(input[type="checkbox"]:checked) {
+                background: $neutral-magnolia;
+
+                // &__checkbox {
+                //     // input[type="checkbox"]:checked + .form_container__form__addon-list__addon__checkbox__checkmark {
+                //     //     background: $primary-marine_blue;
+                //     //     border: 1px solid $primary-marine_blue;
+                //     // }
+                // }
+
+            }
+        }
+
+    }
+}

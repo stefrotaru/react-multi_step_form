@@ -1,13 +1,13 @@
 // import React from 'react';
 
-const Summary = () => {
+const Summary = (isVisible) => {
 
-    
-    return (
-        <div>
-            FORM SUMMARY
-        </div>
-    );
+
+  if (!isVisible.isVisible) {
+    return null;
+  }
+
+  return <div>FORM SUMMARY</div>;
 };
 
 export default Summary;

@@ -21,17 +21,77 @@
       gap: 1rem;
 
       &__card {
-        background: rebeccapurple;
-        padding: 1rem;
+        background: transparent;
+        border: 1px solid $neutral-light_gray;
+        border-radius: 8px;
+        padding: 1.2rem;
+        color: $primary-marine_blue;
         width: 33%;
-        border: 1px solid black;
+        cursor: pointer;
+        z-index: 2;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__icon {
+          display: flex;
+          z-index: 1;
+        }
+
+        &__text {
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.3rem;
+
+          &__title {
+            font-weight: 700;
+            font-size: 1.2em;
+          }
+
+          &__price {
+            color: $neutral-cool_gray;
+            font-size: 1em;
+          }
+
+          &__period {
+            font-size: 0.85em;
+            font-weight: 500;
+            
+            &.hide {
+              opacity: 0;
+              // display: none;
+            }
+          }
+        }
+
+        &.selected {
+          border: 1px solid $primary-purplish_blue;
+          background: $neutral-alabaster;
+        }
       }
 
-      @media screen and (max-width: 768px) {
+      @media screen and (min-width: $breakpoint-tablet-lg) {
+        &__card {
+          height: 165px;
+        }
+      }
+
+      @media screen and (max-width: $breakpoint-tablet-lg) {
+        &__card {
+          flex-direction: row;
+          justify-content: flex-start;
+          gap: 1rem;
+        }
+      }
+
+      @media screen and (max-width: $breakpoint-tablet-lg) {
         flex-direction: column;
 
         &__card {
-          width: 100%;
+          width: auto;
         }
       }
     }
@@ -41,13 +101,57 @@
       justify-content: center;
 
       padding: 1rem;
-      background: grey;
+      background: $neutral-alabaster;
+      border: 1px solid $neutral-alabaster;
+      border-radius: 5px;
 
       &__switch {
+        color: $neutral-cool_gray;
+        font-weight: 700;
+
+        &.selected {
+          color: $primary-marine_blue;
+        }
       }
 
       &__toggle-view {
-        margin-inline: 2rem;
+        margin-inline: 1.5rem;
+
+        display: flex;
+
+        input[type="checkbox"] {
+          height: 0;
+          width: 0;
+          visibility: hidden;
+        }
+
+        label {
+          cursor: pointer;
+          text-indent: -9999px;
+          width: 3rem;
+          height: 1.5rem;
+          background: $primary-marine_blue;
+          display: block;
+          border-radius: 100px;
+          position: relative;
+        }
+
+        label:after {
+          content: "";
+          position: absolute;
+          top: 5px;
+          left: 5px;
+          width: 0.9rem;
+          height: 0.9rem;
+          background: #fff;
+          border-radius: 25px;
+          transition: 0.3s;
+        }
+
+        input:checked + label:after {
+          left: calc(100% - 5px);
+          transform: translateX(-100%);
+        }
       }
     }
 
@@ -76,22 +180,22 @@
         }
       }
 
-    //   .next {
-    //     border-radius: 8px;
-    //     border: 1px solid transparent;
-    //     padding: 0.6em 1.2em;
-    //     font-family: inherit;
-    //     font-size: 1.2em;
-    //     font-weight: 500;
-    //     color: $neutral-white;
-    //     background-color: $primary-marine_blue;
-    //     transition: background-color 0.25s;
-    //     cursor: pointer;
-    //     &:hover {
-    //       //   background-color: #535bf2;
-    //       background-color: lighten($primary-marine_blue, 15%);
-    //     }
-    //   }
+      //   .next {
+      //     border-radius: 8px;
+      //     border: 1px solid transparent;
+      //     padding: 0.6em 1.2em;
+      //     font-family: inherit;
+      //     font-size: 1.2em;
+      //     font-weight: 500;
+      //     color: $neutral-white;
+      //     background-color: $primary-marine_blue;
+      //     transition: background-color 0.25s;
+      //     cursor: pointer;
+      //     &:hover {
+      //       //   background-color: #535bf2;
+      //       background-color: lighten($primary-marine_blue, 15%);
+      //     }
+      //   }
     }
   }
 }

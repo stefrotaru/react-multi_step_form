@@ -6,6 +6,7 @@ import { addAddon, removeAddon } from "../../store/reducers/formAddonsReducer";
 import addonsJSON from "../../data/addonsPrices.json";
 
 const Addons = (isVisible) => {  
+  const formAddons = useSelector((state) => state.formAddons);
   const formPlan = useSelector((state) => state.formPlan);
   const addonsList = Object.keys(addonsJSON);
   const dispatch = useDispatch();
@@ -27,6 +28,14 @@ const Addons = (isVisible) => {
                 addonName: addonName,
             })
         );
+    }
+  };
+
+  const checkIfAddonIsInForm = (addonName) => {
+    if (formAddons.map((key) => key.addonName).includes(addonName)) {
+      return true;
+    } else {
+      return false;
     }
   };
 
@@ -71,10 +80,11 @@ const Addons = (isVisible) => {
                     type="checkbox"
                     id={addonsJSON[addon].title.toLowerCase().replace(" ", "_") + "-input"}
                     name={addonsJSON[addon].title}
-                    value=""
                     className="form_container__form__addon-list__addon__checkbox__input"
                     onClick={addAddonHandler}
+                    defaultChecked={checkIfAddonIsInForm(addonsJSON[addon].title)}
                   />
+                  <label htmlFor={addonsJSON[addon].title.toLowerCase().replace(" ", "_") + "-input"}></label>
                 </div>
                 <div className="form_container__form__addon-list__addon__description">
                   <div className="form_container__form__addon-list__addon__description__text">

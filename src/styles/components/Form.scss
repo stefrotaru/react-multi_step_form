@@ -132,6 +132,10 @@
     }
   }
 
+  @media screen and (max-width: $breakpoint-tablet-sm){
+    padding: 2rem 1.2rem;
+  }
+
   @media screen and (max-width: $breakpoint-desktop-md) {
     padding: 0 4rem;
   }
@@ -155,6 +159,23 @@
     }
 
     &__form {
+      height: unset;
+
+      &__submit_container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+
+        background: $neutral-white;
+        padding: 1rem;
+        margin-top: auto;
+        margin-bottom: 0;
+      }
+    }
+
+    &__select {
       height: unset;
 
       &__submit_container {

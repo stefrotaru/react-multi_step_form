@@ -14,7 +14,7 @@
             gap: 1.25rem;
 
             &__addon {
-                border: 1px solid $primary-purplish_blue;
+                border: 1px solid $neutral-light_gray;
                 padding: 1.5rem;
                 border-radius: 8px;
                 position: relative;
@@ -32,6 +32,39 @@
                         width: 100%;
                         height: 100%;
                         opacity: 0;
+                    }
+
+                    label:before {
+                        content:'';
+                        -webkit-appearance: none;
+                        background-color: transparent;
+                        border: 1px solid $neutral-light_gray;
+                        border-radius: 5px;
+                        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+                        padding: 10px;
+                        display: inline-block;
+                        position: relative;
+                        vertical-align: middle;
+                        cursor: pointer;
+                        margin-right: 5px;
+                    }
+
+                    input:checked + label:before {
+                        background: $primary-purplish_blue;
+                    }
+                    input:checked + label:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        // top: 4px; 
+                        // left: 8px;
+                        top: 36px;
+                        left: 32px;
+                        width: 4px;
+                        height: 8px;;
+                        border: solid $neutral-white;
+                        border-width: 0 2px 2px 0;
+                        transform: rotate(45deg);
                     }
                 }
 
@@ -67,18 +100,50 @@
                         color: $primary-purplish_blue;
                     }
                 }
+
+                @media screen and (max-width: $breakpoint-tablet-sm) {
+                    padding: .75rem;
+
+                    &__checkbox {
+                        input:checked + label:after {
+                            top: 22px;
+                            left: 20px;                        
+                        }
+                    }
+
+                    &__description {
+                        &__text {
+                            padding-left: .5rem;
+                            text-align: left;
+
+                            &__title {
+                                font-size: .9em;
+                            }
+
+                            &__description {
+                                font-size: .75em;
+                                letter-spacing: -.5px;
+                            }
+                        }
+
+                        &__price {
+                            font-size: .9em;
+                        }
+                    }
+                }
+
+                @media screen and (max-width: 350px) {
+                    &__checkbox {
+                        input:checked + label:after {
+                            top: 28px;
+                        }
+                    }
+                }
             }
 
             &__addon:has(input[type="checkbox"]:checked) {
                 background: $neutral-magnolia;
-
-                // &__checkbox {
-                //     // input[type="checkbox"]:checked + .form_container__form__addon-list__addon__checkbox__checkmark {
-                //     //     background: $primary-marine_blue;
-                //     //     border: 1px solid $primary-marine_blue;
-                //     // }
-                // }
-
+                border: 1px solid $primary-purplish_blue;
             }
         }
 

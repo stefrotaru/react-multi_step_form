@@ -1,12 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
-  // {
-  //   addonName: "",
-  //   addonPrice: "",
-  //   addonRenewalInterval: "", // (Month || Year; Will only be monthly but what the hell)
-  // },
-];
+const initialState = [];
 
 // Reducer function
 
@@ -15,7 +9,6 @@ const formAddonsReducer = createSlice({
   initialState: initialState,
   reducers: {
     addAddon: (state = initialState, action) => {
-      console.log("action", action);
       return [
         ...state,
         {
@@ -27,9 +20,12 @@ const formAddonsReducer = createSlice({
     },
     removeAddon: (state = initialState, action) => {
       return state.filter((addon) => addon.addonName !== action.payload.addonName);
+    },
+    restartAddonsArray: () => {
+      return initialState;
     }
   },
 });
 
-export const { addAddon, removeAddon } = formAddonsReducer.actions;
+export const { addAddon, removeAddon, restartAddonsArray } = formAddonsReducer.actions;
 export default formAddonsReducer.reducer;

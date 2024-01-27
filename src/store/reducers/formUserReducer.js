@@ -13,7 +13,6 @@ const formUserReducer = createSlice({
   initialState: initialState,
   reducers: {
     updateFormUser: (state = initialState, action) => {
-      console.log("action", action);
       return {
         ...state,
         name: action.payload.name,
@@ -21,8 +20,11 @@ const formUserReducer = createSlice({
         phone: action.payload.phone,
       };
     },
+    restartFormUser: () => {
+      return initialState;
+    },
   },
 });
 
-export const { updateFormUser } = formUserReducer.actions;
+export const { updateFormUser, restartFormUser } = formUserReducer.actions;
 export default formUserReducer.reducer;

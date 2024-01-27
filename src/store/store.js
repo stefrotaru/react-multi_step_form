@@ -6,6 +6,7 @@ import stepsProgressReducer from './reducers/stepsProgressReducer';
 import formUserReducer from './reducers/formUserReducer';
 import formPlanReducer from './reducers/formPlanReducer';
 import formAddonsReducer from './reducers/formAddonsReducer';
+import formTotalPriceReducer from './reducers/formTotalPriceReducer';
 
 // Define your reducers here
 // Example:
@@ -26,6 +27,7 @@ const store = configureStore({
         formUser: formUserReducer,
         formPlan: formPlanReducer,
         formAddons: formAddonsReducer,
+        formTotalPrice: formTotalPriceReducer,
     }
 });
 

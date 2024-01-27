@@ -1,13 +1,6 @@
 @import "../../variables.scss";
 
 .form_container {
-  &__header {
-    &__title {
-    }
-
-    &__description {
-    }
-  }
 
   &__select {
     display: flex;
@@ -48,21 +41,20 @@
 
           &__title {
             font-weight: 700;
-            font-size: 1.2em;
+            font-size: $font-size-500-mobile;
           }
 
           &__price {
             color: $neutral-cool_gray;
-            font-size: 1em;
+            font-size: $font-size-400-mobile;
           }
 
           &__period {
-            font-size: 0.85em;
+            font-size: $font-size-400-mobile;
             font-weight: 500;
             
             &.hide {
-              opacity: 0;
-              // display: none;
+              display: none;
             }
           }
         }
@@ -154,48 +146,27 @@
         }
       }
     }
+  }
+}
 
-    &__submit_container {
-      display: flex;
-      justify-content: space-between;
-
-      // height: 100%;
-      margin-bottom: 1rem;
-      margin-top: auto;
-
-      .back {
-        border: 0;
-        background: none;
-        font-size: 1.2em;
-        font-weight: 500;
-        color: $form-font-primary-color;
-        cursor: pointer;
-
-        &:hover {
-          color: lighten($form-font-primary-color, 40%);
-        }
-
-        &:focus {
-          outline: none;
+@media screen and (min-width: $breakpoint-tablet-lg) {
+  .form_container {
+  
+    &__select {  
+      &__options {  
+        &__card {
+          &__text {
+  
+            &__title {
+              font-size: $font-size-500-desktop;
+            }
+  
+            &__price {
+              font-size: $font-size-400-desktop;
+            }
+          }
         }
       }
-
-      //   .next {
-      //     border-radius: 8px;
-      //     border: 1px solid transparent;
-      //     padding: 0.6em 1.2em;
-      //     font-family: inherit;
-      //     font-size: 1.2em;
-      //     font-weight: 500;
-      //     color: $neutral-white;
-      //     background-color: $primary-marine_blue;
-      //     transition: background-color 0.25s;
-      //     cursor: pointer;
-      //     &:hover {
-      //       //   background-color: #535bf2;
-      //       background-color: lighten($primary-marine_blue, 15%);
-      //     }
-      //   }
     }
   }
 }

@@ -3,18 +3,18 @@
     "title": "Online service",
     "description": "Access to multiplayer games",
     "Monthly": 1,
-    "Yearly": 12
+    "Yearly": 10
   },
   "largerstorage": {
     "title": "Larger storage",
     "description": "Access to multiplayer games",
     "Monthly": 2,
-    "Yearly": 24
+    "Yearly": 20
   },
   "customizableprofile": {
     "title": "Customizable profile",
     "description": "Custom theme on your profile",
     "Monthly": 2,
-    "Yearly": 24
+    "Yearly": 20
   }
 }

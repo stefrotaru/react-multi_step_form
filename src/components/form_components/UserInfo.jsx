@@ -74,8 +74,6 @@ const UserInfo = (isVisible) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    console.log("Fields valid? ", fieldErrors);
-
     if (
       fieldErrors.name === "" &&
       userName !== "" &&
@@ -112,8 +110,6 @@ const UserInfo = (isVisible) => {
       }
     }
   };
-
-  console.log("from userInfo component: ", isVisible.isVisible);
 
   if (!isVisible.isVisible) {
     return null;

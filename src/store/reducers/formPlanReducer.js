@@ -36,8 +36,11 @@ const formPlanReducer = createSlice({
         subscriptionPrice: action.payload.subscriptionPrice,
       };
     },
+    restartFormPlan: () => {
+      return initialState;
+    }
   },
 });
 
-export const { updatePlan, updatePeriodUnit, updatePlanType } = formPlanReducer.actions;
+export const { updatePlan, updatePeriodUnit, updatePlanType, restartFormPlan } = formPlanReducer.actions;
 export default formPlanReducer.reducer;

@@ -14,14 +14,16 @@ const stepsProgressReducer = createSlice({
   initialState: initialState,
   reducers: {
     updateStep: (state = initialState, action) => {
-      console.log("action", action);
       return {
         ...state,
         [action.payload.step]: action.payload.value,
       };
     },
+    restartSteps: () => {
+      return initialState;
+    },
   },
 });
 
-export const { updateStep } = stepsProgressReducer.actions;
+export const { updateStep, restartSteps } = stepsProgressReducer.actions;
 export default stepsProgressReducer.reducer;

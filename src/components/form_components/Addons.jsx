@@ -4,6 +4,7 @@ import { updateStep } from "../../store/reducers/stepsProgressReducer";
 import { addAddon, removeAddon } from "../../store/reducers/formAddonsReducer";
 
 import addonsJSON from "../../data/addonsPrices.json";
+import { useEffect } from "react";
 
 const Addons = (isVisible) => {  
   const formAddons = useSelector((state) => state.formAddons);
@@ -39,6 +40,20 @@ const Addons = (isVisible) => {
     }
   };
 
+  useEffect(() => {
+    if (formAddons.length > 0) {
+      if (formAddons[0].addonRenewalInterval !== formPlan.subscriptionRenewalIntervalUnit) {
+        formAddons.forEach((addon) => {
+          dispatch(
+            removeAddon({
+              addonName: addon.addonName,
+            })
+          );
+        });
+      }
+    }
+  }, [formPlan]);
+
   const goBackHandler = () => {
     dispatch(
       updateStep({
@@ -60,6 +75,8 @@ const Addons = (isVisible) => {
   if (!isVisible.isVisible) {
     return null;
   }
+
+  // TODO: Seems that form_container__form__addon-list__addon__description__text__description is not correct for some addons
 
   return (
     <div className="form_container">
@@ -104,15 +121,15 @@ const Addons = (isVisible) => {
           })}
 
         </div>
+      </div>
 
-        <div className="form_container__select__submit_container">
-          <button type="" className="back" onClick={goBackHandler}>
-            Go back
-          </button>
-          <button type="submit" className="next" onClick={submitHandler}>
-            Next Step
-          </button>
-        </div>
+      <div className="form_container__back-next_container">
+        <button type="" className="back" onClick={goBackHandler}>
+          Go back
+        </button>
+        <button type="submit" className="next" onClick={submitHandler}>
+          Next Step
+        </button>
       </div>
     </div>
   );

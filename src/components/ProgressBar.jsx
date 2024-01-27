@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 const ProgressBar = () => {
   const stepsProgress = useSelector((state) => state.stepsProgress);
 
-  console.log("From ProgressBar: ", stepsProgress);
-
   return (
     <div className="progress-bar">
       <div

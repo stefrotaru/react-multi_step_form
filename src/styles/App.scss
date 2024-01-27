@@ -1,7 +1,14 @@
+@import "./variables.scss";
+
 @import "./components/ProgressBar.scss";
 @import "./components/Form.scss";
 
-@import "./variables.scss";
+@import "./components/form_components/UserInfo.scss";
+@import "./components/form_components/SelectPlan.scss";
+@import "./components/form_components/Addons.scss";
+@import "./components/form_components/Summary.scss";
+@import "./components/form_components/ThankYou.scss";
+
 
 #root {
   max-width: 1280px;
@@ -12,9 +19,7 @@
   font-family: $primary-font-family;
 
   .container {
-    // height: 70vh;
-    // width: 70vw;
-    // max-height: 39rem;
+    overflow: scroll;
     height: 39rem;
     border-radius: 0.75rem;
 
@@ -28,13 +33,6 @@
 
   input {
     font-family: $primary-font-family;
-  }
-
-  @media screen and (max-width: $breakpoint-mobile-sm) {
-    input {
-      font-size: 0.75em;
-      padding: 0.75rem;
-    }
   }
 
   @media screen and (max-width: $breakpoint-tablet-lg) {
@@ -71,6 +69,14 @@
   @media screen and (min-width: $breakpoint-desktop-lg) {
     .container {
       width: 1024px;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint-tablet-lg) {
+  #root { 
+    .container {
+      overflow: unset;
     }
   }
 }

@@ -1,8 +1,9 @@
 // import React from 'react';
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateStep } from "../../store/reducers/stepsProgressReducer"; 
 import { setPrice } from "../../store/reducers/formTotalPriceReducer";
-import { useEffect } from "react";
+import { restartTotalPrice } from "../../store/reducers/formTotalPriceReducer";
 
 const Summary = (isVisible) => {
   const stepsProgress = useSelector((state) => state.stepsProgress);
@@ -40,7 +41,9 @@ const Summary = (isVisible) => {
         value: false,
       }),
     );
-
+    dispatch(
+      restartTotalPrice(),
+    );
   };
 
   const goBackHandler = () => {

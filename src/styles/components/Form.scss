@@ -82,7 +82,7 @@
           border: 1px solid $form-border-color; // $neutral-light_gray
           border-radius: 0.25rem;
           background: transparent;
-          color: $form-font-secondary-color;
+          color: $form-font-primary-color;
 
           &::placeholder {
             color: $form-font-secondary-color;
@@ -253,6 +253,7 @@
           input {
             font-size: $font-size-400-desktop;
             padding: 1rem;
+            border-radius: 0.5rem;
           }
         }
       }

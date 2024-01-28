@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateStep } from "../../store/reducers/stepsProgressReducer";
 import { addAddon, removeAddon } from "../../store/reducers/formAddonsReducer";
 
-import addonsJSON from "../../data/addonsPrices.json";
+import addonsData from "../../data/addonsData.json";
 import { useEffect } from "react";
 
 const Addons = (isVisible) => {  
   const formAddons = useSelector((state) => state.formAddons);
   const formPlan = useSelector((state) => state.formPlan);
-  const addonsList = Object.keys(addonsJSON);
+  const addonsList = Object.keys(addonsData);
   const dispatch = useDispatch();
 
   const addAddonHandler = (e) => {
@@ -19,7 +19,7 @@ const Addons = (isVisible) => {
         dispatch(
             addAddon({
                 addonName: addonName,
-                addonPrice: addonsJSON[addonName.toLowerCase().replace(" ", "")][formPlan.subscriptionRenewalIntervalUnit],
+                addonPrice: addonsData[addonName.toLowerCase().replace(" ", "")][formPlan.subscriptionRenewalIntervalUnit],
                 addonRenewalInterval: formPlan.subscriptionRenewalIntervalUnit,
             })
         );
@@ -52,7 +52,7 @@ const Addons = (isVisible) => {
         });
       }
     }
-  }, [formPlan]);
+  }, [formPlan, dispatch, formAddons]);
 
   const goBackHandler = () => {
     dispatch(
@@ -76,8 +76,6 @@ const Addons = (isVisible) => {
     return null;
   }
 
-  // TODO: Seems that form_container__form__addon-list__addon__description__text__description is not correct for some addons
-
   return (
     <div className="form_container">
       <div className="form_container__header">
@@ -95,25 +93,25 @@ const Addons = (isVisible) => {
                 <div className="form_container__form__addon-list__addon__checkbox">
                   <input
                     type="checkbox"
-                    id={addonsJSON[addon].title.toLowerCase().replace(" ", "_") + "-input"}
-                    name={addonsJSON[addon].title}
+                    id={addonsData[addon].title.toLowerCase().replace(" ", "_") + "-input"}
+                    name={addonsData[addon].title}
                     className="form_container__form__addon-list__addon__checkbox__input"
                     onClick={addAddonHandler}
-                    defaultChecked={checkIfAddonIsInForm(addonsJSON[addon].title)}
+                    defaultChecked={checkIfAddonIsInForm(addonsData[addon].title)}
                   />
-                  <label htmlFor={addonsJSON[addon].title.toLowerCase().replace(" ", "_") + "-input"}></label>
+                  <label htmlFor={addonsData[addon].title.toLowerCase().replace(" ", "_") + "-input"}></label>
                 </div>
                 <div className="form_container__form__addon-list__addon__description">
                   <div className="form_container__form__addon-list__addon__description__text">
                     <span className="form_container__form__addon-list__addon__description__text__title">
-                      {addonsJSON[addon].title}
+                      {addonsData[addon].title}
                     </span>
                     <span className="form_container__form__addon-list__addon__description__text__description">
-                      {addonsJSON[addon].description}
+                      {addonsData[addon].description}
                     </span>
                   </div>
                   <div className="form_container__form__addon-list__addon__description__price">
-                    +${addonsJSON[addon][formPlan.subscriptionRenewalIntervalUnit]}/{formPlan.subscriptionRenewalIntervalUnit === "Monthly" ? "mo" : "yr"}
+                    +${addonsData[addon][formPlan.subscriptionRenewalIntervalUnit]}/{formPlan.subscriptionRenewalIntervalUnit === "Monthly" ? "mo" : "yr"}
                   </div>
                 </div>
               </div>

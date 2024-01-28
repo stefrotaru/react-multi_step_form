@@ -17,7 +17,7 @@
         background: transparent;
         border: 1px solid $neutral-light_gray;
         border-radius: 8px;
-        padding: 1.2rem;
+        padding: 1rem;
         color: $primary-marine_blue;
         width: 33%;
         cursor: pointer;
@@ -92,7 +92,7 @@
       display: flex;
       justify-content: center;
 
-      padding: 1rem;
+      padding: .75rem;
       background: $neutral-alabaster;
       border: 1px solid $neutral-alabaster;
       border-radius: 5px;
@@ -166,6 +166,10 @@
             }
           }
         }
+      }
+
+      &__period {  
+        padding: 1rem;
       }
     }
   }

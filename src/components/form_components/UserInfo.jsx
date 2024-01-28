@@ -31,10 +31,7 @@ const UserInfo = (isVisible) => {
     if (userName.length < 3) {
       e.target.classList.add("error");
 
-      setFieldErrors({
-        ...fieldErrors,
-        name: "Name must be at least 3 characters long",
-      });
+      setFieldErrors({...fieldErrors, name: "This field is required"});
     } else {
       e.target.classList.remove("error");
       e.target.classList.add("valid");
@@ -47,7 +44,7 @@ const UserInfo = (isVisible) => {
     if (!emailRegex.test(userEmail)) {
       e.target.classList.add("error");
 
-      setFieldErrors({ ...fieldErrors, email: "Invalid email format" });
+      setFieldErrors({ ...fieldErrors, email: "This field is required" });
     } else {
       e.target.classList.remove("error");
       e.target.classList.add("valid");
@@ -60,7 +57,7 @@ const UserInfo = (isVisible) => {
     if (!phoneRegex.test(userPhoneNum)) {
       e.target.classList.add("error");
 
-      setFieldErrors({ ...fieldErrors, phone: "Invalid phone number format" });
+      setFieldErrors({ ...fieldErrors, phone: "This field is required" });
     } else {
       e.target.classList.remove("error");
       e.target.classList.add("valid");
@@ -96,17 +93,56 @@ const UserInfo = (isVisible) => {
         })
       );
     } else {
-      if (!fieldErrors.name && userName === "") {
+      if (fieldErrors.name === "" &&
+          userName === "" &&
+          fieldErrors.email === "" &&
+          userEmail === "" &&
+          fieldErrors.phone === "" &&
+          userPhoneNum === "") {
+        setFieldErrors({name: "This field is required", email: "This field is required", phone: "This field is required"});
         document.querySelector("#user_name").classList.add("error");
-        // setFieldErrors({ ...fieldErrors, name: "Name must be at least 3 characters long" });
+        document.querySelector("#user_email").classList.add("error");
+        document.querySelector("#user_phone").classList.add("error");
+        return;
+      }
+      if (fieldErrors.email === "" &&
+          userEmail === "" &&
+          fieldErrors.phone === "" &&
+          userPhoneNum === "") {
+        setFieldErrors({name: fieldErrors.name, email: "This field is required", phone: "This field is required"});
+        document.querySelector("#user_email").classList.add("error");
+        document.querySelector("#user_phone").classList.add("error");
+        return;
+      }
+      if (fieldErrors.name === "" &&
+          userName === "" &&
+          fieldErrors.email === "" &&
+          userEmail === "") {
+        setFieldErrors({name: "This field is required", email: "This field is required", phone: fieldErrors.phone});
+        document.querySelector("#user_name").classList.add("error");
+        document.querySelector("#user_email").classList.add("error");
+        return;
+      }
+      if (fieldErrors.name === "" &&
+          userName === "" &&
+          fieldErrors.phone === "" &&
+          userPhoneNum === "") {
+        setFieldErrors({name: "This field is required", email: fieldErrors.email, phone: "This field is required"});
+        document.querySelector("#user_name").classList.add("error");
+        document.querySelector("#user_phone").classList.add("error");
+        return;
+      }
+      if (!fieldErrors.name && userName === "") {
+        setFieldErrors({ name: "This field is required", email: fieldErrors.email, phone: fieldErrors.phone});
+        document.querySelector("#user_name").classList.add("error");
       }
       if (!fieldErrors.email && userEmail === "") {
+        setFieldErrors({ name: fieldErrors.name , email: "This field is required", phone: fieldErrors.phone });
         document.querySelector("#user_email").classList.add("error");
-        // setFieldErrors({ ...fieldErrors, email: "Invalid email format" });
       }
       if (!fieldErrors.phone && userPhoneNum === "") {
+        setFieldErrors({ name: fieldErrors.name, email: fieldErrors.email , phone: "This field is required" });
         document.querySelector("#user_phone").classList.add("error");
-        // setFieldErrors({ ...fieldErrors, phone: "Invalid phone number format" });
       }
     }
   };
@@ -141,6 +177,7 @@ const UserInfo = (isVisible) => {
                 autoComplete="name"
                 value={userName}
                 onChange={nameInputHandler}
+                // onSelect={checkNameInput}
                 onBlur={checkNameInput}
                 className=""
                 id="user_name"

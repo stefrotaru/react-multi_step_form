@@ -43,5 +43,5 @@ $form-border-color: $neutral-light_gray;
 $form-error-color: $primary-strawberry_red;
 
 // Progress Bar
-$progress-bar-background: url(../../bg-sidebar-desktop.svg) no-repeat center center;
-$progress-bar-background-mobile: url(../../bg-sidebar-mobile.svg) no-repeat center center;
+$progress-bar-background: url(../../public/bg-sidebar-desktop.svg) no-repeat center center; // correct path for gh-pages is ../bg-sidebar-desktop.svg
+$progress-bar-background-mobile: url(../../public/bg-sidebar-mobile.svg) no-repeat center center; // correct path for gh-pages is ../bg-sidebar-mobile.svg

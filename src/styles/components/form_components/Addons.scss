@@ -62,6 +62,10 @@
                         border: solid $neutral-white;
                         border-width: 0 2px 2px 0;
                         transform: rotate(45deg);
+
+                        @-moz-document url-prefix() {
+                            top: 38px;
+                        }
                     }
                 }
 
@@ -104,7 +108,11 @@
                     &__checkbox {
                         input:checked + label:after {
                             top: 22px;
-                            left: 20px;                        
+                            left: 20px;
+                            
+                            @-moz-document url-prefix() {
+                                top: 24px;
+                            }
                         }
                     }
 

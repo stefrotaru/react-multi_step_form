@@ -19,7 +19,7 @@ const Summary = (isVisible) => {
 
   useEffect(() => {
     if (stepsProgress.userInfo && stepsProgress.selectPlan && stepsProgress.selectAddons) {
-      const total = formPlan.subscriptionPrice + formAddons.reduce((a, b) => a + b.addonPrice, 0);
+      const total = Number(formPlan.subscriptionPrice) + Number(formAddons.reduce((a, b) => a + b.addonPrice, 0));
     
       dispatch(
         setPrice(total),

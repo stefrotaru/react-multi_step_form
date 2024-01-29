@@ -1,5 +1,5 @@
 // import React from 'react';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { updateFormUser } from "../../store/reducers/formUserReducer";
 import { updateStep } from "../../store/reducers/stepsProgressReducer";
@@ -15,6 +15,13 @@ const UserInfo = (isVisible) => {
   });
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // handles form autofill
+    if (userName.length > 3 && userEmail.length > 0 && userPhoneNum.length === 10) {
+      setFieldErrors({ name: "", email: "", phone: "" });
+    }
+  }, [userName, userEmail, userPhoneNum]);
 
   const nameInputHandler = (e) => {
     setUserName(e.target.value);
@@ -177,7 +184,6 @@ const UserInfo = (isVisible) => {
                 autoComplete="name"
                 value={userName}
                 onChange={nameInputHandler}
-                // onSelect={checkNameInput}
                 onBlur={checkNameInput}
                 className=""
                 id="user_name"
